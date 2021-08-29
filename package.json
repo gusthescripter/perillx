@@ -1,0 +1,19 @@
+{
+  "author": "perillx",
+  "name": "perillx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+      "build": "wp-scripts build",
+      "start": "wp-scripts start",
+      "dev": "wp-scripts start",
+      "devFast": "wp-scripts start"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "@wordpress/scripts": "^18.0.0",
+    "bootstrap": "^5.1.0"
+  }
+}

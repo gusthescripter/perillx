@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","mappings":";;;;;AACAA,KAAK,CAAC,sBAAD,CAAL;AACAA,KAAK,CAAC,CAAD,CAAL;AACAC,OAAO,CAACC,GAAR,CAAY,MAAZ,E","sources":["webpack://perillx/./src/index.js"],"sourcesContent":["\nalert('testing wp node tool');\nalert(1);\nconsole.log('test');\n"],"names":["alert","console","log"],"sourceRoot":""}

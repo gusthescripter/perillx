@@ -1,3 +1,4 @@
+</div>
 <br>
 <footer>
 <h6>footer</h6>

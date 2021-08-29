@@ -4,8 +4,6 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
-
 		<meta name="description" content="">
 		<meta name="author" content="">
 
@@ -16,51 +14,39 @@
 	</head>
 	<body <?php body_class(); ?>>
 	<header>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"><?php the_custom_logo();?></a><a class="navbar-brand" href="#"><div class="site-branding"><p class="site-title"><?php echo get_bloginfo('name'); ?></p></div></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<?php
+
 			wp_nav_menu(array(
-				'theme_location' => 'headerMenuLocation'
+				'theme_location' => 'headerMenuLocation',
+				'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0',
+				'add_li_class' => 'g-text',
+				'link_class' => ' g-color'
 			));
 		?>
-      <!--<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>-->
+		
     </div>
   </div>
 </nav>
 		<?php
 
-			echo '<h1>site title</h1>';
+			//echo '<h1>'.get_bloginfo('name').'</h1>';
+			//echo '<div class="container site-branding"><p class="site-description">'.get_bloginfo('description').'</p></div>';
 		?>
+		<style>
+			#showcase {
+				background-image: url("<?php //header_image(); ?>");
+				padding: 88px;
+			}
+		</style>
+		<div id="" class="header_image"><br><div class="container site-branding"><p class="site-description"><?php echo get_bloginfo('description'); ?></p></div><br></div>
+
 	</header>
 <br>
-	
+<div class="container">
