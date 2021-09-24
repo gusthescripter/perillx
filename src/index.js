@@ -1,2 +1,5 @@
+          
+import '../resources/assets/scss/style.scss'
+import bootstrap from 'bootstrap'
 
-console.log('test');
+var boot = new Bootstrap()

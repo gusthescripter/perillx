@@ -2,17 +2,14 @@
 
 	if(! function_exists('perillx_files')) {
 		function perillx_files() {
-			wp_enqueue_script(
-				'bootstrap', 
-				get_template_directory_uri().'/resources/assets/js/bootstrap.bundle.js'
-			);
+			
 			wp_enqueue_script(
 				'node',
-				get_template_directory_uri().'/src/index.js'
+				get_template_directory_uri().'/build/index.js'
 			);
 			wp_enqueue_style(
 				'bootstrap',
-				get_template_directory_uri().'/resources/assets/css/bootstrap.css'
+				get_template_directory_uri().'/style.css'
 			);
 			
 		}
@@ -76,5 +73,86 @@
 
 	}
 	add_action( 'widgets_init', 'arphabet_widgets_init' );
+	
+require_once(get_stylesheet_directory().'/vendor/scssphp/scssphp/scss.inc.php');
+
+add_action('customize_register', function($wp_customize) {
+	$wp_customize->add_section('theme-variables', [
+		'title' => __('Theme Variables', 'txtdomain'),
+		'priority' => 25
+	]);
+ 
+	$wp_customize->add_setting('theme-main', ['default' => '#594c74']);
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'theme-main', [
+		'section' => 'theme-variables',
+		'label' => __('Main theme color', 'txtdomain'),
+		'priority' => 10
+	]));
+ 
+	$wp_customize->add_setting('theme-secondary', ['default' => '#555']);
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'theme-secondary', [
+		'section' => 'theme-variables',
+		'label' => __('Secondary theme color', 'txtdomain'),
+		'priority' => 20
+	]));
+ 
+	$wp_customize->add_setting('theme-text-size', ['default' => '12']);
+	$wp_customize->add_control('theme-text-size', [
+		'section' => 'theme-variables',
+		'label' => __('Text size', 'txtdomain'),
+		'type' => 'number',
+		'priority' => 30,
+		'input_attrs' => ['min' => 8, 'max' => 20, 'step' => 1]
+	]);
+});
+
+if (is_customize_preview()) {
+	
+	add_action('wp_head', function() {
+		$compiler = new ScssPhp\ScssPhp\Compiler();
+ 
+		$source_scss = get_stylesheet_directory() . '/resources/assets/scss/style.scss';
+		$scssContents = file_get_contents($source_scss);
+		$import_path = get_stylesheet_directory() . '/resources/assets/scss';
+		$compiler->addImportPath($import_path);
+ 
+		$variables = [
+			'$white' => get_theme_mod('theme-main', '#594c74'),
+			'$secondary' => get_theme_mod('theme-secondary', '#555'),
+			'$text-size' => get_theme_mod('theme-text-size', '12') . 'px',
+		];
+		$compiler->setVariables($variables);
+ 
+		$css = $compiler->compile($scssContents);
+		if (!empty($css) && is_string($css)) {
+			echo '<style type="text/css">' . $css . '</style>';
+		}
+	});
+}
+add_action('customize_save_after', 'style_saver');
+
+function style_saver() {
+	$compiler = new ScssPhp\ScssPhp\Compiler();
+ 
+	$source_scss = get_stylesheet_directory() . '/resources/assets/scss/style.scss';
+	$scssContents = file_get_contents($source_scss);
+	$import_path = get_stylesheet_directory() . '/resources/assets/scss';
+	$compiler->addImportPath($import_path);
+	$target_css = get_stylesheet_directory() . '/style.css';
+ 
+	$variables = [
+		'$white' => get_theme_mod('theme-main', '#594c74'),
+		'$secondary' => get_theme_mod('theme-secondary', '#555'),
+		'$text-size' => get_theme_mod('theme-text-size', '12') . 'px',
+	];		
+	$compiler->setVariables($variables);
+ 
+	$css = $compiler->compile($scssContents);
+	//$css = 'test';
+	if (!empty($css) && is_string($css)) {
+		file_put_contents($target_css, $css);
+	}
+	//file_put_contents($target_css, 'test');
+}
 
 ?>
