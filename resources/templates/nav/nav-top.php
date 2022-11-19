@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent ">
   <div class="container-fluid container">
     <?php the_custom_logo();?><a class="navbar-brand" href="#"><div class="site-branding"><p class="site-title"><?php echo get_bloginfo('name'); ?></p></div></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

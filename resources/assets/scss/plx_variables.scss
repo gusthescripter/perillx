@@ -1,0 +1,21 @@
+//Custom variables settings
+$primary: #594c74 !default;
+$secondary: #555 !default;
+$text-size: 12px !default;
+
+//Navbar settings
+$navbar-custom-icon-color:                 rgba($white, .55) !default;
+$navbar-custom-icon-border-color:          rgba($white, .55) !default;
+
+$navbar-custom-icon-active:                rgba($white, .55) !default;
+$navbar-custom-icon-color:                 rgba($white, .55) !default;
+$navbar-custom-icon-hover-color:           rgba($white, .55) !default;
+$navbar-custom-icon-active-color:          $white !default;
+$navbar-custom-icon-disabled-color:        rgba($white, .25) !default;
+$navbar-custom-icon-bg:                    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-custom-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+$navbar-custom-icon-border-color:          rgba($white, .1) !default;
+
+$navbar-custom-text-color:                 rgba($white, .55) !default;
+$navbar-custom-text-active:                rgba($white, .55) !default;
+
+$footer-bg:                                rgba($white, .55) !default;

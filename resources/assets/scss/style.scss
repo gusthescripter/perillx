@@ -8,9 +8,5 @@
 */
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
-$primary: #594c74 !default;
-$secondary: #555 !default;
-$text-size: 12px !default;
-
-
-$white: #000;
+@import "plx_variables.scss";
+@import "plx_navbar.scss";

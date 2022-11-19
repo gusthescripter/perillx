@@ -1,0 +1,51 @@
+// Custom navbar settings
+
+.navbar-light {
+  .navbar-brand {
+    color: $navbar-light-brand-color;
+
+    &:hover,
+    &:focus {
+      color: $navbar-light-brand-hover-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-light-color;
+
+      &:hover,
+      &:focus {
+        color: $navbar-light-hover-color;
+      }
+
+      &.disabled {
+        color: $navbar-light-disabled-color;
+      }
+    }
+
+    .show > .nav-link,
+    .nav-link.active {
+      color: $navbar-light-active-color;
+    }
+  }
+
+  .navbar-toggler {
+    color: $navbar-custom-icon-color;
+    border-color: $navbar-custom-icon-border-color;
+  }
+
+  .navbar-toggler-icon {
+    background-image: escape-svg($navbar-custom-icon-bg);
+  }
+
+  .navbar-text {
+    color: $navbar-custom-text-color;
+
+    a,
+    a:hover,
+    a:focus  {
+      color: $navbar-custom-text-active;
+    }
+  }
+}
